@@ -15,6 +15,11 @@ resource "aws_s3_bucket" "my_bucket" {
 # ==========================
 # Security Group
 # ==========================
+# Get the default VPC
+data "aws_vpc" "default" {
+  default = true
+}
+
 resource "aws_security_group" "my_sg" {
   name        = "terraform-sg"
   description = "Allow SSH and HTTP"
